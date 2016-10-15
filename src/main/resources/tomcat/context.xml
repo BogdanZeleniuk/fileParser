@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<Context>
+
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+   <Resource name="jdbc/fileParser"
+              auth="Container"
+              type="javax.sql.DataSource"
+              maxActive="3"  minIdle="1"  maxWait="100000"
+              initialSize="3" maxPoolSize="3" minPoolSize="1"  maxConnectionAge="0"
+	          maxIdleTime="1800"  maxIdleTimeExcessConnections="120" idleConnectionTestPeriod="30"
+              acquireIncrement="1"     testConnectionOnCheckout="true"
+              removeAbandoned="true"   logAbandoned="true"
+              username="user"
+              password="password"
+              driverClassName="org.postgresql.Driver"
+              url="jdbc:postgresql://localhost:5432/fileParser"/>
+</Context>
