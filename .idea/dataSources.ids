@@ -10,36 +10,36 @@
       <schema id="2" parent="1" name="public">
         <object-id>2200</object-id>
         <comment>standard public schema</comment>
-        <introspection-state-number>15224</introspection-state-number>
-        <introspection-timestamp>2016-10-15.12:59:17.335</introspection-timestamp>
+        <introspection-state-number>15457</introspection-state-number>
+        <introspection-timestamp>2016-10-16.10:38:49.526</introspection-timestamp>
       </schema>
       <sequence id="3" parent="2" name="global_seq">
-        <object-id>38974</object-id>
-        <state-number>15222</state-number>
+        <object-id>47349</object-id>
+        <state-number>15455</state-number>
       </sequence>
       <table id="4" parent="2" name="files">
-        <object-id>38976</object-id>
-        <state-number>15223</state-number>
+        <object-id>47351</object-id>
+        <state-number>15456</state-number>
       </table>
       <column id="5" parent="4" name="id">
-        <state-number>15223</state-number>
+        <state-number>15456</state-number>
         <mandatory>1</mandatory>
         <data-type>integer</data-type>
         <default-expression>nextval(&apos;global_seq&apos;::regclass)</default-expression>
       </column>
       <column id="6" parent="4" name="content">
-        <state-number>15223</state-number>
+        <state-number>15456</state-number>
         <mandatory>1</mandatory>
         <data-type>bytea</data-type>
       </column>
       <index id="7" parent="4" name="files_pkey">
-        <object-id>38983</object-id>
+        <object-id>47358</object-id>
         <columns>id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
       <index id="8" parent="4" name="files_unique_idx">
-        <object-id>38985</object-id>
+        <object-id>47360</object-id>
         <columns>id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
