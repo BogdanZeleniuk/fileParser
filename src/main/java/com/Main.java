@@ -1,17 +1,19 @@
 package com;
 
 import com.service.FileUploadServiceImpl;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 public class Main {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring-app.xml", "spring-db.xml", "spring-mvc.xml");
-        ThreadPoolTaskExecutor taskExecutor = (ThreadPoolTaskExecutor) context.getBean("taskExecutor");
-        taskExecutor.execute((Runnable) new FileUploadServiceImpl());
-        taskExecutor.execute((Runnable) new FileUploadServiceImpl());
-        taskExecutor.execute((Runnable) new FileUploadServiceImpl());
+        GenericXmlApplicationContext appCtx = new GenericXmlApplicationContext();
+        appCtx.getEnvironment().setActiveProfiles("jpa", "postgres");
+        appCtx.load("spring/spring-app.xml", "spring/spring-db.xml", "spring/spring-mvc.xml");
+        appCtx.refresh();
+        ThreadPoolTaskExecutor taskExecutor = (ThreadPoolTaskExecutor) appCtx.getBean("taskExecutor");
+        taskExecutor.execute(FileUploadServiceImpl::new);
+        taskExecutor.execute(FileUploadServiceImpl::new);
+        taskExecutor.execute(FileUploadServiceImpl::new);
         for (;;){
             int count = taskExecutor.getActiveCount();
             System.out.println("Active Threads: " + count);

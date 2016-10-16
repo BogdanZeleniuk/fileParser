@@ -1,7 +1,7 @@
 package com.service;
 
-import com.model.File;
 import com.repository.FileUploadRepository;
+import com.model.File;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Async
-public class FileUploadServiceImpl implements FileUploadService{
+public class FileUploadServiceImpl implements FileUploadService, Runnable{
 
     @Autowired
     private FileUploadRepository repository;
@@ -33,5 +33,10 @@ public class FileUploadServiceImpl implements FileUploadService{
     @Override
     public List<File> getAll() {
         return repository.getAll();
+    }
+
+    @Override
+    public void run() {
+        System.out.println("FileUploadServiceImpl");
     }
 }

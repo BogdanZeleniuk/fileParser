@@ -7,7 +7,7 @@ import java.util.Arrays;
 @NamedQueries({
         @NamedQuery(name = File.DELETE, query = "DELETE FROM File file WHERE file.id=:id"),
         @NamedQuery(name = File.GET, query = "SELECT file FROM File file WHERE file.id=:id"),
-        @NamedQuery(name = File.ALL, query = "SELECT file FROM File file WHERE file.id=:id")
+        @NamedQuery(name = File.ALL, query = "SELECT file FROM File file")
 })
 @Entity
 @Table(name = "files")
@@ -39,6 +39,14 @@ public class File {
     }
 
     public void setFile(byte[] content) {
+        this.content = content;
+    }
+
+    public File() {
+    }
+
+    public File(Integer id, byte[] content) {
+        this.id = id;
         this.content = content;
     }
 
